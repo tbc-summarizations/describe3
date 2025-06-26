@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Description for image.png</title>
+  <style>
+    body { background-color: #36393F; color: #DCDDDE; font-family: sans-serif; margin: 0; padding: 10px; }
+    a { color: #7289da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: bold; }
+    em { font-style: italic; }
+    u { text-decoration: underline; }
+    s { text-decoration: line-through; }
+    code { background-color: rgba(255,255,255,0.1); padding: 2px 4px; border-radius: 3px; font-size: 90%; font-family: monospace; }
+    .discord-text { white-space: pre-wrap; word-wrap: break-word; }
+  </style>
+</head>
+<body>
+  <h1>Description for image.png</h1>
+  <div class="discord-text">Alright, let's break down this physics problem. Here's how to solve it:
+
+<strong>Understanding the Problem</strong>
+
+•   <strong>MRUV:</strong> The bus is undergoing Uniformly Accelerated Rectilinear Motion (MRUV). This means it has constant acceleration.
+•   <strong>Initial Conditions:</strong> The bus starts from rest (v = 0).
+•   <strong>First Phase:</strong> The bus enters the tunnel completely in 2 seconds. During this time, the front of the bus travels a distance equal to the length of the tunnel (L).
+•   <strong>Second Phase:</strong> We need to find the additional time it takes for the bus to <em>completely exit</em> the tunnel.  This means the <em>back</em> of the bus needs to travel the length of the tunnel (L) plus the length of the bus (6m) in addition to whatever distance the front of the bus travels.
+•   <strong>Final Velocity:</strong> The bus has a velocity of 10 m/s when it completely exits the tunnel.
+
+<strong>Steps to Solve</strong>
+
+1.  <strong>Analyze the First Phase (Entering the Tunnel):</strong>
+•   Let 'a' be the constant acceleration of the bus.
+•   We know that the distance traveled by the front of the bus (L) in time t = 2 s is given by:
+        L = v₀t + (1/2)at²  Since v₀ = 0,  L = (1/2)a(2)² = 2a
+        Therefore, L = 2a
+2.  <strong>Analyze the Second Phase (Exiting the Tunnel):</strong>
+•   Let 't' be the additional time it takes to completely exit the tunnel.
+•   During this time 't', the <em>back</em> of the bus needs to travel a distance of L + 6 meters.
+•   The initial velocity for this second phase is the velocity the bus has after 2 seconds, which can be calculated as:
+        v = v₀ + at = 0 + a(2) = 2a
+•   Now, using the equation of motion for the back of the bus:
+        L + 6 = (2a)t + (1/2)at²
+•   We know L = 2a, so:
+        2a + 6 = 2at + (1/2)at²
+3.  <strong>Relate the Total Velocity (10 m/s):</strong>
+•   The final velocity of the <em>front</em> of the bus when it completely exits the tunnel is 10 m/s.  This velocity is reached after a total time of 2 + t seconds.
+•   Using the equation: v = v₀ + at  --&gt;  10 = 0 + a(2 + t)  --&gt;  a = 10 / (2 + t)
+
+4.  <strong>Solve the Equations:</strong>
+•   Substitute the value of 'a' from step 3 into the equation from step 2:
+        2 <em> [10 / (2 + t)] + 6 = 2 </em> [10 / (2 + t)] <em> t + (1/2) </em> [10 / (2 + t)] <em> t²
+•   Simplify and solve for 't':
+        20 / (2 + t) + 6 = 20t / (2 + t) + 5t² / (2 + t)
+        Multiply both sides by (2 + t):
+        20 + 6(2 + t) = 20t + 5t²
+        20 + 12 + 6t = 20t + 5t²
+        5t² + 14t - 32 = 0
+
+5.  <strong>Solve the Quadratic:</strong>
+•   Use the quadratic formula to solve for 't':
+        t = [-b ± sqrt(b² - 4ac)] / 2a
+        t = [-14 ± sqrt(14² - 4 </em> 5 <em> -32)] / (2 </em> 5)
+        t = [-14 ± sqrt(196 + 640)] / 10
+        t = [-14 ± sqrt(836)] / 10
+        t = [-14 ± 28.91] / 10
+•   We get two possible values for 't':
+        t₁ = (-14 + 28.91) / 10 = 1.491 seconds
+        t₂ = (-14 - 28.91) / 10 = -4.291 seconds
+•   Since time cannot be negative, we discard t₂.
+
+<strong>Answer</strong>
+
+Therefore, the additional time it takes for the bus to completely exit the tunnel is approximately <strong>1.49 seconds</strong>.</div>
+  <hr>
+  <h2>image.png</h2>
+<div><img src="https://cdn.discordapp.com/attachments/1138103048502247534/1387593926608814252/image.png?ex=685de90c&is=685c978c&hm=36270dd27dabfb0c31f562a47c78143c0a272159794990950533368a6ca598e5&" alt="Described image" style="max-width: 100%;"></div>
+</body>
+</html>
