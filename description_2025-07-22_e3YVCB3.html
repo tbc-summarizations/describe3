@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Description for image.png</title>
+  <style>
+    body { background-color: #36393F; color: #DCDDDE; font-family: sans-serif; margin: 0; padding: 10px; }
+    a { color: #7289da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: bold; }
+    em { font-style: italic; }
+    u { text-decoration: underline; }
+    s { text-decoration: line-through; }
+    code { background-color: rgba(255,255,255,0.1); padding: 2px 4px; border-radius: 3px; font-size: 90%; font-family: monospace; }
+    .discord-text { white-space: pre-wrap; word-wrap: break-word; }
+  </style>
+</head>
+<body>
+  <h1>Description for image.png</h1>
+  <div class="discord-text">Okay, I understand. Based on the image you sent, here's what I can tell you about the error:
+
+<strong>Error Message Breakdown:</strong>
+
+•   <strong><code>Humanoid::ApplyDescription()</code></strong>: This indicates that the error is occurring when the game is trying to apply a <code>HumanoidDescription</code> to a character's <code>Humanoid</code> object.
+•   <strong>"The current HumanoidDescription does not match the assets currently applied to the character."</strong>: This is the core of the problem. The game is comparing the <code>HumanoidDescription</code> (which specifies the character's appearance - hair, face, clothing, body parts, etc.) with the actual assets that are currently equipped or applied to the character model. There's a mismatch.
+•   <strong>"Did you edit the character?"</strong>: This is Roblox's way of suggesting that the discrepancy is likely because the character's appearance has been manually changed <em>after</em> the <code>HumanoidDescription</code> was initially set or loaded.
+
+<strong>Possible Causes and Solutions:</strong>
+
+1.  <strong>Direct Character Modification:</strong>
+•   <strong>Problem:</strong> You or your script are directly modifying the character's appearance (e.g., changing the <code>Shirt</code>, <code>Pants</code>, <code>Face</code>, accessories, or body part Mesh IDs) <em>after</em> the <code>HumanoidDescription</code> has been applied.
+•   <strong>Solution:</strong> Avoid directly modifying the character's appearance <em>after</em> applying the <code>HumanoidDescription</code>. If you <em>need</em> to make changes, re-apply the <code>HumanoidDescription</code> <em>after</em> those changes are made.
+
+2.  <strong>Asset Loading Issues (Less Likely):</strong>
+•   <strong>Problem:</strong>  The <code>HumanoidDescription</code> might be referencing assets (e.g., a specific face texture or hair accessory) that are failing to load correctly when the character spawns.  This can happen due to asset ownership problems or temporary Roblox issues.
+•   <strong>Solution:</strong> Ensure the assets in your <code>HumanoidDescription</code> are publicly accessible (or properly group-owned if you're using group assets). Check for asset load errors in the Output window. Retry loading the character.
+
+3.  <strong>Incorrect <code>HumanoidDescription</code>:</strong>
+•   <strong>Problem:</strong> The <code>HumanoidDescription</code> you're using might be fundamentally incorrect or incomplete. For example, it might be missing a required body part asset or have an incorrect asset ID.
+•   <strong>Solution:</strong> Double-check the contents of your <code>HumanoidDescription</code>. Make sure all necessary assets are included and that the asset IDs are correct.
+
+4.  <strong>Race Conditions/Timing Issues:</strong>
+•   <strong>Problem:</strong> If you're applying the <code>HumanoidDescription</code> very quickly after the character is added, there <em>might</em> be a race condition where the character hasn't fully initialized or loaded all its default assets.
+•   <strong>Solution:</strong>  Introduce a slight delay (e.g., <code>task.wait(0.1)</code>) before applying the <code>HumanoidDescription</code> to give the character time to fully initialize.  This is a bit of a "hack," but it can sometimes resolve these issues.
+
+<strong>Debugging Steps:</strong>
+
+1.  <strong>Identify the exact line of code:</strong> The error message points to <code>Script 'ServerScriptService.GameHandler', Line 139</code>.  Go to that line in your script. That's where the <code>ApplyDescription()</code> call is happening.
+
+2.  <strong>Inspect the <code>HumanoidDescription</code>:</strong> Before calling <code>ApplyDescription()</code>, print the contents of the <code>HumanoidDescription</code> to the Output window to see what it contains:
+
+    lua
+    local description = -- ... your HumanoidDescription ...
+    print(description:GetInfo()) -- Print detailed info
+    --print(http.JSONEncode(description)) -- You can also attempt JSON encoding
+    Humanoid:ApplyDescription(description)
+    
+
+    Examine the output. Are all the asset IDs valid and present?
+
+3.  <strong>Inspect the Character's Assets:</strong>  After the character spawns, but <em>before</em> you apply the <code>HumanoidDescription</code>, inspect the character's <code>Humanoid</code> and its children (the <code>Shirt</code>, <code>Pants</code>, body part meshes, etc.).  See what assets are <em>already</em> on the character <em>before</em> you try to change them. This will help you understand if the <code>HumanoidDescription</code> is overwriting something it shouldn't.
+
+4.  <strong>Step-by-Step Debugging:</strong> Use the Roblox Studio debugger to step through your code line by line.  This will let you see exactly when the error occurs and what the values of your variables are at that point.
+
+<strong>Important Considerations:</strong>
+
+•   <strong>Server-Side vs. Client-Side:</strong> The error is happening in a server-side script (<code>ServerScriptService.GameHandler</code>). This means that whatever character modification is causing the problem is likely originating on the server.
+
+By systematically investigating these possibilities and using the debugging techniques I've outlined, you should be able to pinpoint the source of the error and resolve it.</div>
+  <hr>
+  <h2>image.png</h2>
+<div><img src="https://cdn.discordapp.com/attachments/1138103048502247534/1397256103691030732/image.png?ex=68810fa6&is=687fbe26&hm=9ef8babfe57cf92088340f5f2c95153f3204755bedd7e24d4c84b4402626cfd7&" alt="Described image" style="max-width: 100%;"></div>
+</body>
+</html>
